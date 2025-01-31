@@ -40,13 +40,35 @@
 
         var marker = L.marker([29.649, -82.343]).addTo(map);
 
-        var circle = L.circle([51.508, -0.11], {
+        var circle = L.circle([29.649, -82.343], {
         color: 'red',
         fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
+        fillOpacity: 0.4,
+        radius: 15
     }).addTo(map);
     
+        var polygon = L.polygon([
+        [29.650, -82.345],
+        [29.654, -82.346],
+        [29.652, -82.347],
+        
+    ]).addTo(map);
+
+    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    circle.bindPopup("I am a circle.");
+    polygon.bindPopup("This is pretty cool.");
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString() + "Badass!")
+            .openOn(map);
+    }
+
+map.on('click', onMapClick);
+
     </script>
 
 </body>
