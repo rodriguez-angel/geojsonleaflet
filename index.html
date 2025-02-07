@@ -70,6 +70,14 @@
 map.on('click', onMapClick);
 
     </script>
+    
+    fetch(    fetch('Angelmap.geojson')
+        .then(response => response.json())
+        .then(data => {
+            L.geoJSON(data).addTo(map);
+        })
+        .catch(error => console.error('Error loading the GeoJSON file:', error));')
+
 
 </body>
 
