@@ -67,18 +67,17 @@
             .openOn(map);
     }
 
-map.on('click', onMapClick);
+    map.on('click', onMapClick);
 
-    </script>
-    
-    fetch(    fetch('Angelmap.geojson')
+    // Fetch and add GeoJSON data
+    fetch('Angelmap.geojson')
         .then(response => response.json())
         .then(data => {
             L.geoJSON(data).addTo(map);
         })
-        .catch(error => console.error('Error loading the GeoJSON file:', error));')
+        .catch(error => console.error('Error loading the GeoJSON file:', error));
 
-
+    </script>
 </body>
 
 </html>
